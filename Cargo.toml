@@ -1,0 +1,34 @@
+[package]
+name = "woolog"
+version = "0.1.0"
+edition = "2021"
+description = "A colorful logging library with multi-language support"
+authors = ["Xiang Yang <Ryu-Yang@qq.com>"]
+license = "Apache-2.0"
+
+[lib]
+name = "woolog"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+python = ["pyo3"]
+
+[dependencies]
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "ansi", "json"] }
+once_cell = "1.19"
+atty = "0.2"
+libc = "0.2"
+
+[dependencies.pyo3]
+version = "0.20"
+optional = true
+features = ["extension-module"]
+
+[package.metadata.maturin]
+name = "woolog"
+classifier = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: 3",
+]
